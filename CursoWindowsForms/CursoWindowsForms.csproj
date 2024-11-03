@@ -100,6 +100,36 @@
     <Compile Include="Formulários Curso 2\Frm_Mascara_UC.Designer.cs">
       <DependentUpon>Frm_Mascara_UC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formulários Curso 3\Frm_CadastroClientes_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formulários Curso 3\Frm_CadastroClientes_UC.Designer.cs">
+      <DependentUpon>Frm_CadastroClientes_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários Curso 3\Frm_MenuFlutuante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários Curso 3\Frm_MenuFlutuante.Designer.cs">
+      <DependentUpon>Frm_MenuFlutuante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários Curso 3\Frm_MouseCaptura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários Curso 3\Frm_MouseCaptura.Designer.cs">
+      <DependentUpon>Frm_MouseCaptura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários Curso 3\Frm_MouseCursor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários Curso 3\Frm_MouseCursor.Designer.cs">
+      <DependentUpon>Frm_MouseCursor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulários Curso 3\Frm_MouseEventos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulários Curso 3\Frm_MouseEventos.Designer.cs">
+      <DependentUpon>Frm_MouseEventos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +222,21 @@
     <EmbeddedResource Include="Formulários Curso 2\Frm_Mascara_UC.resx">
       <DependentUpon>Frm_Mascara_UC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formulários Curso 3\Frm_CadastroClientes_UC.resx">
+      <DependentUpon>Frm_CadastroClientes_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários Curso 3\Frm_MenuFlutuante.resx">
+      <DependentUpon>Frm_MenuFlutuante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários Curso 3\Frm_MouseCaptura.resx">
+      <DependentUpon>Frm_MouseCaptura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários Curso 3\Frm_MouseCursor.resx">
+      <DependentUpon>Frm_MouseCursor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulários Curso 3\Frm_MouseEventos.resx">
+      <DependentUpon>Frm_MouseEventos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Principal.resx">
       <DependentUpon>Frm_Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,6 +301,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Imagens\Cadastros.png" />
+    <Content Include="Imagens\DeleteAll.png" />
+    <Content Include="Imagens\DeleteLeft.png" />
+    <Content Include="Imagens\DeleteRight.png" />
+    <Content Include="Imagens\DeleteTab.png" />
     <Content Include="Imagens\Frm_DemonstracaoKey.ico" />
     <Content Include="Imagens\Frm_DemonstracaoKey.png" />
     <Content Include="Imagens\Frm_HelloWorld.ico" />
@@ -273,6 +323,8 @@
     <Content Include="Imagens\icons8-question-100.ico" />
     <Content Include="Imagens\icons8-question-100.png" />
     <Content Include="Imagens\key.png" />
+    <Content Include="Imagens\money.png" />
+    <Content Include="Imagens\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
