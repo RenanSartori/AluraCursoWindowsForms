@@ -43,6 +43,7 @@ namespace CursoWindowsForms
             Rdb_Masculino.Text = "Masculino";
             Rdb_Indefinido.Text = "Indefinido";
             Grp_Genero.Text = "Gênero";
+            Btn_Busca.Text = "Buscar";
 
 
             Cmb_Estados.Items.Clear();
@@ -193,6 +194,56 @@ namespace CursoWindowsForms
 
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
+
+            if (Txt_Codigo.Text == "")
+            {
+                MessageBox.Show("Código do Cliente vazio.", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                try
+                {
+                    Cliente.Unit C = new Cliente.Unit();
+                    C = LeituraFormulario();
+                    C.ValidaClasse();
+                    C.ValidaComplemento();
+                    string clienteJson = Cliente.SerializedClassUnit(C);
+
+                    Fichario f = new Fichario("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+
+                    if (f.status)
+                    {
+                        f.Alterar(C.Id, clienteJson);
+                        if (f.status)
+                        {
+
+                            MessageBox.Show("OK: " + f.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("ERR: " + f.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("ERR: " + f.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                }
+                catch (ValidationException ex)
+                {
+                    MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+
+
 
         }
 
@@ -398,6 +449,61 @@ namespace CursoWindowsForms
                     }
                 }
             }
+        }
+
+        private void Btn_Busca_Click(object sender, EventArgs e)
+        {
+
+            Fichario f = new Fichario("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+            if (f.status)
+            {
+                List<string> list = new List<string>();
+                list = f.BuscarTodos();
+                if (f.status)
+                {
+                    List<List<string>> listaBusca = new List<List<string>>();
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        Cliente.Unit c = Cliente.DesSerializedClassUnit(list[i]);
+                        listaBusca.Add(new List<string> { c.Id, c.Nome });
+                        
+                    }
+                    Frm_Busca fForm = new Frm_Busca(listaBusca);
+                    fForm.ShowDialog();
+
+                    if (fForm.DialogResult == DialogResult.OK)
+                    {
+                        var idSelect = fForm.idSelect;
+
+                        string clienteJson = f.Buscar(idSelect);
+                        if (f.status)
+                        {
+                            Cliente.Unit c = new Cliente.Unit();
+                            c = Cliente.DesSerializedClassUnit(clienteJson);
+                            EscreveFormulario(c);
+                        }
+                        else
+                        {
+                            MessageBox.Show("ERR: " + f.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("ERR: " + f.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
+                    
+            }
+            else
+            {
+                MessageBox.Show("ERR: " + f.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+            
         }
     }
 }
