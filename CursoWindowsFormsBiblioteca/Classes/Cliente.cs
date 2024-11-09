@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using CursoWindowsFormsBiblioteca.Databases;
 
 namespace CursoWindowsFormsBiblioteca.Classes
 {
@@ -116,6 +117,109 @@ namespace CursoWindowsFormsBiblioteca.Classes
 
             }
 
+
+            #region "CRUD do Fichario"
+
+            public void IncluirFichario(string conexao)
+            {
+                string clienteJson = SerializedClassUnit(this);
+                Fichario f = new Fichario(conexao);
+                if (f.status)
+                {
+                    f.Incluir(this.Id, clienteJson);
+                    if (!f.status)
+                    {
+                        throw new Exception(f.mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(f.mensagem);
+                }
+            }
+
+            public Unit BuscarFichario(string id, string conexao)
+            {
+                Fichario f = new Fichario(conexao);
+                if (f.status)
+                {
+                    string clienteJson = f.Buscar(id);
+                    if (f.status)
+                    {
+                        return DesSerializedClassUnit(clienteJson);
+                    }
+                    else
+                    {
+                        throw new Exception(f.mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(f.mensagem);
+                }
+            }
+
+            public void AlterarFichario(string conexao)
+            {
+                string clienteJson = SerializedClassUnit(this);
+
+                Fichario f = new Fichario(conexao);
+
+                if (f.status)
+                {
+                    f.Alterar(this.Id, clienteJson);
+                    if (!f.status)
+                    {
+                        throw new Exception(f.mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(f.mensagem);
+                }
+            }
+
+
+            public void ApagarFichario(string conexao)
+            {
+
+                Fichario f = new Fichario(conexao);
+
+                if (f.status)
+                {
+                    f.Apagar(this.Id);
+                    if (!f.status)
+                    {
+                        throw new Exception(f.mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(f.mensagem);
+                }
+            }
+
+            public List<string> ListarFicharios(string conexao)
+            {
+                Fichario f = new Fichario(conexao);
+
+                if (f.status)
+                {
+                    List<string> todosJson = f.BuscarTodos();
+                    if (!f.status)
+                    {
+                        throw new Exception(f.mensagem);
+                    }
+                    return todosJson;
+                }
+                else
+                {
+                    throw new Exception(f.mensagem);
+                }
+
+            }
+
+            #endregion
         }
 
         public class List

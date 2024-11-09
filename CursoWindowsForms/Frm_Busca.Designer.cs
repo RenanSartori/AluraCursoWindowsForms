@@ -43,7 +43,7 @@
             this.apagaToolStripButton});
             this.Tls_Principal.Location = new System.Drawing.Point(0, 0);
             this.Tls_Principal.Name = "Tls_Principal";
-            this.Tls_Principal.Size = new System.Drawing.Size(470, 25);
+            this.Tls_Principal.Size = new System.Drawing.Size(311, 25);
             this.Tls_Principal.TabIndex = 33;
             this.Tls_Principal.Text = "toolStrip1";
             // 
@@ -69,17 +69,19 @@
             // 
             // Lst_Busca
             // 
+            this.Lst_Busca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Lst_Busca.FormattingEnabled = true;
             this.Lst_Busca.Location = new System.Drawing.Point(12, 39);
             this.Lst_Busca.Name = "Lst_Busca";
-            this.Lst_Busca.Size = new System.Drawing.Size(446, 251);
+            this.Lst_Busca.Size = new System.Drawing.Size(287, 251);
             this.Lst_Busca.TabIndex = 34;
             // 
             // Frm_Busca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 302);
+            this.ClientSize = new System.Drawing.Size(311, 310);
             this.Controls.Add(this.Lst_Busca);
             this.Controls.Add(this.Tls_Principal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
