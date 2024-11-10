@@ -220,6 +220,111 @@ namespace CursoWindowsFormsBiblioteca.Classes
             }
 
             #endregion
+
+
+            #region "CRUD do FicharioDB LocalDB"
+
+            public void IncluirFicharioDB(string conexao)
+            {
+                string clienteJson = SerializedClassUnit(this);
+                FicharioDB f = new FicharioDB(conexao);
+                if (f.status)
+                {
+                    f.Incluir(this.Id, clienteJson);
+                    if (!f.status)
+                    {
+                        throw new Exception(f.mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(f.mensagem);
+                }
+            }
+
+            public Unit BuscarFicharioDB(string id, string conexao)
+            {
+                FicharioDB f = new FicharioDB(conexao);
+                if (f.status)
+                {
+                    string clienteJson = f.Buscar(id);
+                    if (f.status)
+                    {
+                        return DesSerializedClassUnit(clienteJson);
+                    }
+                    else
+                    {
+                        throw new Exception(f.mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(f.mensagem);
+                }
+            }
+
+            public void AlterarFicharioDB(string conexao)
+            {
+                string clienteJson = SerializedClassUnit(this);
+
+                FicharioDB f = new FicharioDB(conexao);
+
+                if (f.status)
+                {
+                    f.Alterar(this.Id, clienteJson);
+                    if (!f.status)
+                    {
+                        throw new Exception(f.mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(f.mensagem);
+                }
+            }
+
+
+            public void ApagarFicharioDB(string conexao)
+            {
+
+                FicharioDB f = new FicharioDB(conexao);
+
+                if (f.status)
+                {
+                    f.Apagar(this.Id);
+                    if (!f.status)
+                    {
+                        throw new Exception(f.mensagem);
+                    }
+                }
+                else
+                {
+                    throw new Exception(f.mensagem);
+                }
+            }
+
+            public List<string> ListarFichariosDB(string conexao)
+            {
+                FicharioDB f = new FicharioDB(conexao);
+
+                if (f.status)
+                {
+                    List<string> todosJson = f.BuscarTodos();
+                    if (!f.status)
+                    {
+                        throw new Exception(f.mensagem);
+                    }
+                    return todosJson;
+                }
+                else
+                {
+                    throw new Exception(f.mensagem);
+                }
+
+            }
+
+            #endregion
+
         }
 
         public class List

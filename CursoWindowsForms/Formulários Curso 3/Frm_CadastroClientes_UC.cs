@@ -130,7 +130,8 @@ namespace CursoWindowsForms
                 C = LeituraFormulario();
                 C.ValidaClasse();
                 C.ValidaComplemento();
-                C.IncluirFichario("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+                //C.IncluirFichario("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+                C.IncluirFicharioDB("Cliente");
                 MessageBox.Show("OK: Identificador incluído com sucesso", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -155,7 +156,8 @@ namespace CursoWindowsForms
                 try
                 {
                     Cliente.Unit c = new Cliente.Unit();
-                    c = c.BuscarFichario(Txt_Codigo.Text, "C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+                    //c = c.BuscarFichario(Txt_Codigo.Text, "C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+                    c = c.BuscarFicharioDB(Txt_Codigo.Text, "Cliente");
                     EscreveFormulario(c);
 
                     //Fichario f = new Fichario("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
@@ -201,7 +203,8 @@ namespace CursoWindowsForms
                     C = LeituraFormulario();
                     C.ValidaClasse();
                     C.ValidaComplemento();
-                    C.AlterarFichario("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+                    //C.AlterarFichario("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+                    C.AlterarFicharioDB("Cliente");
                     MessageBox.Show("OK: Identificador alterado com sucesso", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
@@ -257,13 +260,15 @@ namespace CursoWindowsForms
                 {
 
                     Cliente.Unit c = new Cliente.Unit();
-                    c = c.BuscarFichario(Txt_Codigo.Text, "C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+                   //c = c.BuscarFichario(Txt_Codigo.Text, "C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+                    c = c.BuscarFicharioDB(Txt_Codigo.Text, "Cliente");
                     EscreveFormulario(c);
                     Frm_Questao Db = new Frm_Questao("icons8_question_1001", "Você quer excluir o cliente?");
                     Db.ShowDialog();
                     if (Db.DialogResult == DialogResult.Yes)
                     {
-                        c.ApagarFichario("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+                        //c.ApagarFichario("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+                        c.ApagarFicharioDB("Cliente");
                         MessageBox.Show("OK: Identificador apagado com sucesso", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LimparFormulario();
                     }
@@ -474,7 +479,8 @@ namespace CursoWindowsForms
             {
                 Cliente.Unit c = new Cliente.Unit();
                 List<string> list = new List<string>();
-                list = c.ListarFicharios("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+                //list = c.ListarFicharios("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+                list = c.ListarFichariosDB("Cliente");
 
                 List<List<string>> listaBusca = new List<List<string>>();
                 for (int i = 0; i < list.Count; i++)
@@ -490,7 +496,8 @@ namespace CursoWindowsForms
                 {
                     var idSelect = fForm.idSelect;
 
-                    c = c.BuscarFichario(idSelect, "C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+                    //c = c.BuscarFichario(idSelect, "C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+                    c = c.BuscarFicharioDB(idSelect, "Cliente");
 
                     EscreveFormulario(c);
                 }

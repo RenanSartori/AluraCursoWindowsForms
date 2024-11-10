@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CursoWindowsForms.Properties {
+namespace CursoWindowsFormsBiblioteca.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -26,9 +26,8 @@ namespace CursoWindowsForms.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\re_sa\\Documents\\Vis" +
-            "ual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\CursoWindowsFormsBi" +
-            "blioteca\\Databases\\Fichario.mdf\";Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Databases\\Fic" +
+            "hario.mdf;Integrated Security=True")]
         public string FicharioConnectionString {
             get {
                 return ((string)(this["FicharioConnectionString"]));
