@@ -48,6 +48,7 @@ namespace CursoWindowsForms
             Rdb_Indefinido.Text = "Indefinido";
             Grp_Genero.Text = "Gênero";
             Btn_Busca.Text = "Buscar";
+            Grp_DataGrid.Text = "Clientes";
 
 
             Cmb_Estados.Items.Clear();
@@ -87,6 +88,7 @@ namespace CursoWindowsForms
             Tls_Principal.Items[4].ToolTipText = "Limpa dados na tela de entrada de dados";
 
             LimparFormulario();
+            AtualizaGrid();
         }
 
 
@@ -131,9 +133,11 @@ namespace CursoWindowsForms
                 C.ValidaClasse();
                 C.ValidaComplemento();
                 //C.IncluirFichario("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
-                C.IncluirFicharioDB("Cliente");
+                //C.IncluirFicharioDB("Cliente");
+                //C.IncluirFicharioSQL("Cliente");
+                C.IncluirFicharioSQLRel();
                 MessageBox.Show("OK: Identificador incluído com sucesso", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                AtualizaGrid();
             }
             catch (ValidationException ex)
             {
@@ -157,7 +161,9 @@ namespace CursoWindowsForms
                 {
                     Cliente.Unit c = new Cliente.Unit();
                     //c = c.BuscarFichario(Txt_Codigo.Text, "C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
-                    c = c.BuscarFicharioDB(Txt_Codigo.Text, "Cliente");
+                    //c = c.BuscarFicharioDB(Txt_Codigo.Text, "Cliente");
+                    //c = c.BuscarFicharioSQL(Txt_Codigo.Text, "Cliente");
+                    c = c.BuscarFicharioSQLRel(Txt_Codigo.Text);
                     EscreveFormulario(c);
 
                     //Fichario f = new Fichario("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
@@ -204,9 +210,11 @@ namespace CursoWindowsForms
                     C.ValidaClasse();
                     C.ValidaComplemento();
                     //C.AlterarFichario("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
-                    C.AlterarFicharioDB("Cliente");
+                    //C.AlterarFicharioDB("Cliente");
+                    //C.AlterarFicharioSQL("Cliente");
+                    C.AlterarFicharioSQLRel();
                     MessageBox.Show("OK: Identificador alterado com sucesso", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    AtualizaGrid();
 
                     //string clienteJson = Cliente.SerializedClassUnit(C);
 
@@ -260,17 +268,22 @@ namespace CursoWindowsForms
                 {
 
                     Cliente.Unit c = new Cliente.Unit();
-                   //c = c.BuscarFichario(Txt_Codigo.Text, "C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
-                    c = c.BuscarFicharioDB(Txt_Codigo.Text, "Cliente");
+                    //c = c.BuscarFichario(Txt_Codigo.Text, "C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
+                    //c = c.BuscarFicharioDB(Txt_Codigo.Text, "Cliente");
+                    //c = c.BuscarFicharioSQL(Txt_Codigo.Text, "Cliente");
+                    c = c.BuscarFicharioSQLRel(Txt_Codigo.Text);
                     EscreveFormulario(c);
                     Frm_Questao Db = new Frm_Questao("icons8_question_1001", "Você quer excluir o cliente?");
                     Db.ShowDialog();
                     if (Db.DialogResult == DialogResult.Yes)
                     {
                         //c.ApagarFichario("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
-                        c.ApagarFicharioDB("Cliente");
+                        //c.ApagarFicharioDB("Cliente");
+                        //c.ApagarFicharioSQL("Cliente");
+                        c.ApagarFicharioSQLRel();
                         MessageBox.Show("OK: Identificador apagado com sucesso", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LimparFormulario();
+                        AtualizaGrid();
                     }
 
                     //Fichario f = new Fichario("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
@@ -480,15 +493,15 @@ namespace CursoWindowsForms
                 Cliente.Unit c = new Cliente.Unit();
                 List<string> list = new List<string>();
                 //list = c.ListarFicharios("C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
-                list = c.ListarFichariosDB("Cliente");
+                //list = c.ListarFichariosDB("Cliente");
+                //list = c.ListarFichariosSQL("Cliente");
+                var listaBusca = c.ListarFichariosSQLRel();
+                //for (int i = 0; i < list.Count; i++)
+                //{
+                //    c = Cliente.DesSerializedClassUnit(list[i]);
+                //    listaBusca.Add(new List<string> { c.Id, c.Nome });
 
-                List<List<string>> listaBusca = new List<List<string>>();
-                for (int i = 0; i < list.Count; i++)
-                {
-                    c = Cliente.DesSerializedClassUnit(list[i]);
-                    listaBusca.Add(new List<string> { c.Id, c.Nome });
-
-                }
+                //}
                 Frm_Busca fForm = new Frm_Busca(listaBusca);
                 fForm.ShowDialog();
 
@@ -497,7 +510,9 @@ namespace CursoWindowsForms
                     var idSelect = fForm.idSelect;
 
                     //c = c.BuscarFichario(idSelect, "C:\\Users\\re_sa\\Documents\\Visual Studio Projects\\AluraCursoWindowsForms\\CursoWindowsForms\\Fichario");
-                    c = c.BuscarFicharioDB(idSelect, "Cliente");
+                    //c = c.BuscarFicharioDB(idSelect, "Cliente");
+                    //c = c.BuscarFicharioSQL(idSelect, "Cliente");
+                    c = c.BuscarFicharioSQLRel(idSelect);
 
                     EscreveFormulario(c);
                 }
@@ -561,6 +576,48 @@ namespace CursoWindowsForms
 
 
 
+        }
+
+        private void AtualizaGrid()
+        {
+            try
+            {
+                Cliente.Unit c = new Cliente.Unit();
+                Dg_Clientes.Rows.Clear();
+                var listaBusca = c.ListarFichariosSQLRel();
+                for (int i = 0; i < listaBusca.Count; i++)
+                {
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(Dg_Clientes);
+                    row.Cells[0].Value = listaBusca[i][0].ToString();
+                    row.Cells[1].Value = listaBusca[i][1].ToString();
+                    Dg_Clientes.Rows.Add(row);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Dg_Clientes_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row = Dg_Clientes.SelectedRows[0];
+                string id = row.Cells[0].Value.ToString();
+
+                Cliente.Unit c = new Cliente.Unit();
+                c = c.BuscarFicharioSQLRel(id);
+                EscreveFormulario(c);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
